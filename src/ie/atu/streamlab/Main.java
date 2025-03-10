@@ -3,6 +3,9 @@ package ie.atu.streamlab;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
@@ -46,5 +49,38 @@ public class Main {
         int min = task5Numbers.stream()
                 .reduce(Integer.MAX_VALUE, Math::min);
         System.out.println("Minimum value: " + min);
+        
+        // DIY Task 6: File Processing with Streams
+        System.out.println("\nDIY Task 6: File Processing with Streams");
+        try {
+            String filePath = "resources/input.txt";
+            
+            // Count total lines in the file
+            long lineCount = Files.lines(Paths.get(filePath)).count();
+            System.out.println("Total lines in file: " + lineCount);
+            
+            // Count words containing "Java"
+            long javaWordCount = Files.lines(Paths.get(filePath))
+                                     .flatMap(line -> Arrays.stream(line.split("\\s+")))
+                                     .filter(word -> word.contains("Java"))
+                                     .count();
+            System.out.println("Words containing 'Java': " + javaWordCount);
+            
+            // Count all lines containing the word "streams" (case insensitive)
+            long streamsCount = Files.lines(Paths.get(filePath))
+                                     .filter(line -> line.toLowerCase().contains("streams"))
+                                     .count();
+            System.out.println("Number of lines containing 'streams': " + streamsCount);
+
+            // Get the average line length in words
+            double averageLineLength = Files.lines(Paths.get(filePath))
+                                             .mapToInt(line -> line.split("\\s+").length)
+                                             .average()
+                                             .orElse(0);
+            System.out.println("Average line length in words: " + averageLineLength);
+            
+        } catch (IOException e) {
+            System.err.println("Error processing file: " + e.getMessage());
+        }
     }
 }
