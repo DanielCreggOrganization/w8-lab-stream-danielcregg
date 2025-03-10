@@ -32,5 +32,19 @@ public class Main {
         nums.stream()
                 .map(NumberUtils::doubleNumber) // Using method reference to double each number
                 .forEach(System.out::println); // Using method reference to print
+
+        // DIY Task 5: Reduce Practice
+        System.out.println("\nDIY Task 5: Reduce Practice");
+        List<Integer> task5Numbers = Arrays.asList(2, 4, 6, 8, 10);
+
+        // Calculate the product of all numbers
+        int product = task5Numbers.stream()
+                                  .reduce(1, (a, b) -> a * b);
+        System.out.println("Product: " + product);
+
+        // Find the minimum value
+        int min = task5Numbers.stream()
+                .reduce(Integer.MAX_VALUE, Math::min);
+        System.out.println("Minimum value: " + min);
     }
 }
