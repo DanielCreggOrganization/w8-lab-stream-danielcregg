@@ -53,18 +53,7 @@ public class Main {
         // DIY Task 6: File Processing with Streams
         System.out.println("\nDIY Task 6: File Processing with Streams");
         try {
-            String filePath = "resources/input.txt";
-            
-            // Count total lines in the file
-            long lineCount = Files.lines(Paths.get(filePath)).count();
-            System.out.println("Total lines in file: " + lineCount);
-            
-            // Count words containing "Java"
-            long javaWordCount = Files.lines(Paths.get(filePath))
-                                     .flatMap(line -> Arrays.stream(line.split("\\s+")))
-                                     .filter(word -> word.contains("Java"))
-                                     .count();
-            System.out.println("Words containing 'Java': " + javaWordCount);
+            String filePath = "resources/input.txt"; // Path to the input file
             
             // Count all lines containing the word "streams" (case insensitive)
             long streamsCount = Files.lines(Paths.get(filePath))
