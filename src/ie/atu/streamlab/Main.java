@@ -57,9 +57,9 @@ public class Main {
             
             // Count all lines containing the word "streams" (case insensitive)
             long streamsCount = Files.lines(Paths.get(filePath))
-                                     .filter(line -> line.toLowerCase().contains("streams"))
+                                     .filter(line -> line.toLowerCase().contains("java"))
                                      .count();
-            System.out.println("Number of lines containing 'streams': " + streamsCount);
+            System.out.println("Number of lines containing 'java': " + streamsCount);
 
             // Get the average line length in words
             double averageLineLength = Files.lines(Paths.get(filePath))
