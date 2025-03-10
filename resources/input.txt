@@ -1,0 +1,5 @@
+This is a sample text file for testing Java Stream operations.
+Java streams provide a powerful way to process collections of data.
+We can use Java streams to read and analyze text files efficiently.
+This file will be used for DIY Task 6 of the lab.
+Java makes file processing simple and concise.
